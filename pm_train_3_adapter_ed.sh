@@ -1,7 +1,10 @@
 #!/bin/bash
 
+# fine-tuning using Adapter blocks
+# Update both Encoder and Mask Decoder
+
 # Set CUDA device
-export CUDA_VISIBLE_DEVICES="1"
+export CUDA_VISIBLE_DEVICES="3"
 
 # Define variables
 arch="vit_b"  # Change this value as needed
@@ -15,7 +18,7 @@ val_img_list="${img_folder}/${dataset_name}/val.csv"
 
 
 # Construct the checkpoint directory argument
-dir_checkpoint="2D-SAM_${arch}_decoder_${finetune_type}_${dataset_name}_noprompt_1"
+dir_checkpoint="2D-SAM_${arch}_decoder_${finetune_type}_${dataset_name}_noprompt_3"
 
 # Run the Python script
 python SingleGPU_train_finetune_noprompt.py \
@@ -23,10 +26,13 @@ python SingleGPU_train_finetune_noprompt.py \
     -finetune_type "$finetune_type" \
     -arch "$arch" \
     -if_mask_decoder_adapter True \
+    -if_update_encoder True \
+    -if_encoder_adapter True \
     -img_folder "$img_folder" \
     -mask_folder "$img_folder" \
     -sam_ckpt "./weights/sam_vit_b_01ec64.pth" \
     -dataset_name "$dataset_name" \
     -dir_checkpoint "$dir_checkpoint" \
     -train_img_list "$train_img_list" \
-    -val_img_list "$val_img_list"
+    -val_img_list "$val_img_list" \
+    -epochs 1000

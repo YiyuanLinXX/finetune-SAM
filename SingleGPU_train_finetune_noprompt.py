@@ -183,7 +183,7 @@ def train_model(trainloader,valloader,dir_checkpoint,epochs):
                     last_update_epoch = epoch
                     print('largest DSC now: {}'.format(dsc))
                     torch.save(sam.state_dict(),dir_checkpoint + '/checkpoint_best.pth')
-                elif (epoch-last_update_epoch)>20:
+                elif (epoch-last_update_epoch)>1000:
                     # the network haven't been updated for 20 epochs
                     print('Training finished###########')
                     break

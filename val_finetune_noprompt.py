@@ -104,8 +104,8 @@ def main(args,test_image_list):
 
     save_folder = os.path.join('test_results',args.dir_checkpoint)
     Path(save_folder).mkdir(parents=True,exist_ok = True)
-    #np.save(os.path.join(save_folder,'test_masks.npy'),np.concatenate(pred_msk,axis=0))
-    #np.save(os.path.join(save_folder,'test_name.npy'),np.concatenate(np.expand_dims(img_name_list,0),axis=0))
+    np.save(os.path.join(save_folder,'test_masks.npy'),np.concatenate(pred_msk,axis=0))
+    np.save(os.path.join(save_folder,'test_name.npy'),np.concatenate(np.expand_dims(img_name_list,0),axis=0))
 
 
     print(dataset_name)      
@@ -126,5 +126,5 @@ if __name__ == "__main__":
         
     dataset_name = args.dataset_name
     print('train dataset: {}'.format(dataset_name)) 
-    test_img_list =  args.img_folder + '/train_slices_info_sampled_1000.txt'
+    test_img_list =  args.img_folder + '/PM_2019/test.csv'
     main(args,test_img_list)

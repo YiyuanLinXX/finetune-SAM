@@ -4,3 +4,5 @@ weights/
 **/__pycache__/
 __pycache__/
 *.py[cod]
+ckpt/
+test_results/

@@ -6,3 +6,6 @@ __pycache__/
 *.py[cod]
 ckpt/
 test_results/
+inference_results/
+image/
+bash_scripts/

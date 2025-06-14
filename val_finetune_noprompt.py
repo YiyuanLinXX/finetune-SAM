@@ -126,5 +126,5 @@ if __name__ == "__main__":
         
     dataset_name = args.dataset_name
     print('train dataset: {}'.format(dataset_name)) 
-    test_img_list =  args.img_folder + '/PM_2019/test.csv'
+    test_img_list = os.path.join(args.img_folder, args.dataset_name, 'test.csv')
     main(args,test_img_list)
